@@ -27,7 +27,10 @@ function Login() {
         // console.log("Result : " ,resut)
         if (resut) {
           console.log("Login successful:", resut._id);
-          window.location.href = (`/pages/profile/${resut._id}`);
+          setTimeout(() => {
+             window.location.href = (`/pages/profile/${resut._id}`);
+          }, 200);
+         
         } else {
         }
         resetForm();
