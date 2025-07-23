@@ -7,6 +7,7 @@ import { Eye, EyeOff } from "lucide-react";
 import Link from "next/link";
 import useForm from "@/app/hooks/useFrom";
 import { loginUser } from "@/app/lib/user";
+import { useRouter } from 'next/router';
 
 const initialFormState = {
   email: "",
@@ -14,6 +15,7 @@ const initialFormState = {
 };
 
 function Login() {
+  const router = useRouter();
   const { formData, handleChange, resetForm } = useForm(initialFormState);
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -28,7 +30,7 @@ function Login() {
         if (resut) {
           console.log("Login successful:", resut._id);
           setTimeout(() => {
-             window.location.href = (`/pages/profile/${resut._id}`);
+              router.push(`/pages/profile/${resut._id}`);
           }, 200);
          
         } else {
