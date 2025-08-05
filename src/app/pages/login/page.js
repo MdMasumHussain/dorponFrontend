@@ -26,16 +26,16 @@ function Login() {
         // console.log("User : " ,user)
         const resut = await loginUser(user)
         
-        // console.log("Result : " ,resut)
-        // if (resut) {
-        //   console.log("Login successful:", resut._id);
-        //   setTimeout(() => {
-        //       router.push(`/pages/profile/${resut._id}`);
-        //   }, 200);
+        console.log("Result : " ,resut)
+        if (resut) {
+          console.log("Login successful:", resut._id);
+          setTimeout(() => {
+              router.push(`/pages/profile/${resut._id}`);
+          }, 200);
          
-        // } else {
-        // }
-        // resetForm();
+        } else {
+        }
+        resetForm();
       }
 
   const [isVisible, setIsVisible] = useState(false);
