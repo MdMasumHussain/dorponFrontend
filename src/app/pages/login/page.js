@@ -27,15 +27,15 @@ function Login() {
         const resut = await loginUser(user)
         
         // console.log("Result : " ,resut)
-        if (resut) {
-          console.log("Login successful:", resut._id);
-          setTimeout(() => {
-              router.push(`/pages/profile/${resut._id}`);
-          }, 200);
+        // if (resut) {
+        //   console.log("Login successful:", resut._id);
+        //   setTimeout(() => {
+        //       router.push(`/pages/profile/${resut._id}`);
+        //   }, 200);
          
-        } else {
-        }
-        resetForm();
+        // } else {
+        // }
+        // resetForm();
       }
 
   const [isVisible, setIsVisible] = useState(false);
