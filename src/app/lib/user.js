@@ -5,7 +5,7 @@ dotenv.config();
 export async function registrationUser(user) {
   console.log(user)
     try {
-        const res = await fetch(`http://localhost:4000/api/auth/register`, {
+        const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/auth/register`, {
 
           method: "POST",
           headers: {
@@ -29,7 +29,7 @@ export async function registrationUser(user) {
     };
 export async function loginUser(user) {
     try {
-        const res = await fetch("http://localhost:4000/api/auth/login", {
+        const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/auth/login`, {
           method: "POST",
           headers: {
             "Content-Type": "application/json",
@@ -56,7 +56,7 @@ export async function faceUserByID(token) {
   // const token = cookies.token;
   // console.log("fetch Token:", token); // Log the token for debugging
     try {
-        const res = await fetch(`${process.env.USER_URL}/profile`, {
+        const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/auth/profile`, {
         method: "GET",
         headers: {
             "Content-Type": "application/json",
@@ -78,7 +78,7 @@ export async function faceUserByID(token) {
 
 export async function logoutUser() {
     try {
-        const res = await fetch(`http://localhost:4000/api/auth/logout`, {
+        const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/auth/logout`, {
           method: "GET",
           headers: {
             "Content-Type": "application/json",
