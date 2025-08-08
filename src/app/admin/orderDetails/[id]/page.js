@@ -1,6 +1,5 @@
 import React from "react";
 import Image from "next/image";
-import { useState } from "react";
 import { getOrders } from "@/app/lib/order";
 
 const getProductData = async (productId) => {

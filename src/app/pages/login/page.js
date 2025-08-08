@@ -7,6 +7,8 @@ import { Eye, EyeOff } from "lucide-react";
 import Link from "next/link";
 import useForm from "@/app/hooks/useFrom";
 import { loginUser } from "@/app/lib/user";
+import { useRouter } from 'next/navigation';
+import { useAuth } from "@/app/context/AuthContext";
 
 const initialFormState = {
   email: "",
@@ -14,6 +16,8 @@ const initialFormState = {
 };
 
 function Login() {
+  const router = useRouter();
+  const { login } = useAuth();
   const { formData, handleChange, resetForm } = useForm(initialFormState);
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -21,13 +25,11 @@ function Login() {
           email: formData.email,
           password: formData.password,
         };
-        // console.log("User : " ,user)
-        const resut = await loginUser(user)
+        const result = await loginUser(user)
         
-        // console.log("Result : " ,resut)
-        if (resut) {
-          console.log("Login successful:", resut._id);
-          window.location.href = (`/pages/profile/${resut._id}`);
+        if (result) {
+          login(result);
+          router.push(`/pages/profile/${result._id}`);
         } else {
         }
         resetForm();

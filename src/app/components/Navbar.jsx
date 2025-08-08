@@ -1,17 +1,16 @@
+"use client";
 import Link from "next/link";
 import React from "react";
 import { CgShoppingCart } from "react-icons/cg";
+import { useAuth } from "../context/AuthContext";
 
-async function Navbar(user) {
-  const userId = user.user?._id;
-  // const allDropdowns = document.querySelectorAll(".main-nav__dropdown")
-  // window.addEventListener("click", (e)=>{
-  //   [...allDropdowns].forEach((dropdown)=>(dropdown.open = false))
-  // })
+function Navbar() {
+  const { user, logout } = useAuth();
+
   const navItem = (
     <>
       <li>
-      <Link href={"/"}>Home</Link>
+        <Link href={"/"}>Home</Link>
       </li>
       <li>
         <details className="main-nav__dropdown">
@@ -34,6 +33,7 @@ async function Navbar(user) {
       </li>
     </>
   );
+
   return (
     <>
       <div className="max-w-screen-2xl container fixed top-0 left-0 z-50">
@@ -68,7 +68,26 @@ async function Navbar(user) {
                 {navItem}
               </ul>
             </div>
-            <Link href={"/"} className="btn btn-ghost text-xl"><span className="bg-amber-400 rounded-md sm:text-sm md:text-2xl md:w-8 md:h-8 sm:w-5 sm:h-5 h-6 w-6 ">D</span><span className="bg-orange-500 rounded-md sm:text-sm md:text-2xl md:w-8 md:h-8 sm:w-5 sm:h-5 h-6 w-6 ">O</span><span className="bg-cyan-800 rounded-md sm:text-sm md:text-2xl md:w-8 md:h-8 sm:w-5 sm:h-5 h-6 w-6 ">R</span><span className="bg-amber-400 rounded-md sm:text-sm md:text-2xl md:w-8 md:h-8 sm:w-5 sm:h-5 h-6 w-6 ">P</span><span className="bg-orange-500 rounded-md sm:text-sm md:text-2xl md:w-8 md:h-8 sm:w-5 sm:h-5 h-6 w-6 ">O</span><span className="bg-cyan-800 rounded-md sm:text-sm md:text-2xl md:w-8 md:h-8 sm:w-5 sm:h-5 h-6 w-6 ">N</span></Link>
+            <Link href={"/"} className="btn btn-ghost text-xl">
+              <span className="bg-amber-400 rounded-md sm:text-sm md:text-2xl md:w-8 md:h-8 sm:w-5 sm:h-5 h-6 w-6 ">
+                D
+              </span>
+              <span className="bg-orange-500 rounded-md sm:text-sm md:text-2xl md:w-8 md:h-8 sm:w-5 sm:h-5 h-6 w-6 ">
+                O
+              </span>
+              <span className="bg-cyan-800 rounded-md sm:text-sm md:text-2xl md:w-8 md:h-8 sm:w-5 sm:h-5 h-6 w-6 ">
+                R
+              </span>
+              <span className="bg-amber-400 rounded-md sm:text-sm md:text-2xl md:w-8 md:h-8 sm:w-5 sm:h-5 h-6 w-6 ">
+                P
+              </span>
+              <span className="bg-orange-500 rounded-md sm:text-sm md:text-2xl md:w-8 md:h-8 sm:w-5 sm:h-5 h-6 w-6 ">
+                O
+              </span>
+              <span className="bg-cyan-800 rounded-md sm:text-sm md:text-2xl md:w-8 md:h-8 sm:w-5 sm:h-5 h-6 w-6 ">
+                N
+              </span>
+            </Link>
           </div>
           <div className="navbar-end space-x-1 md:space-x-2.5 md:px-10">
             <div className="navbar-center hidden lg:flex">
@@ -127,11 +146,44 @@ async function Navbar(user) {
                 </svg>
               </label>
             </div>
-            <div >
-            <Link href={"/pages/cart"} ><CgShoppingCart className="w-7 h-7 sm:w-5 sm:h-5 font-weight: 100" /></Link>
+            <div>
+              <Link href={"/pages/cart"}>
+                <CgShoppingCart className="w-7 h-7 sm:w-5 sm:h-5 font-weight: 100" />
+              </Link>
             </div>
             <div className="">
-              <Link href={userId? `/pages/profile/${userId}`: "/pages/login"} className="btn">{userId ? "Profile" : "Login"}</Link>
+              {user ? (
+                <div className="dropdown dropdown-end">
+                  <div className="avatar avatar-online">
+                    <div className="w-7 rounded-full">
+                      <img src="https://img.daisyui.com/images/profile/demo/gordon@192.webp" />
+                    </div>
+                  </div>
+                  <ul
+                    tabIndex={0}
+                    className="mt-3 z-[1] p-2 shadow menu menu-sm dropdown-content bg-base-100 rounded-box w-52"
+                  >
+                    <li>
+                      <Link
+                        href="/pages/profile/user"
+                        className="justify-between"
+                      >
+                        Profile
+                      </Link>
+                    </li>
+                    <li>
+                      <a>Settings</a>
+                    </li>
+                    <li>
+                      <a onClick={logout}>Logout</a>
+                    </li>
+                  </ul>
+                </div>
+              ) : (
+                <Link href="/pages/login" className="btn">
+                  Login
+                </Link>
+              )}
             </div>
           </div>
         </div>

@@ -1,7 +1,3 @@
-const dotenv = require("dotenv");
-dotenv.config();
-
-
 export async function registrationUser(user) {
   console.log(user)
     try {

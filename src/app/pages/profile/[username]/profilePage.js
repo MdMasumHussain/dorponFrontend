@@ -1,27 +1,17 @@
 "use client";
 import React, { useState } from "react";
 import { Pencil } from "lucide-react";
-import { logoutUser } from "@/app/lib/user";
 import { useRouter } from "next/navigation";
-function ProfilePage(user) {
+import { useAuth } from "@/app/context/AuthContext";
+
+function ProfilePage({ user }) {
   const router = useRouter();
+  const { logout } = useAuth();
   const [isEdit, setIsEdit] = useState(false);
   const toggleEdit = () => setIsEdit((edit) => !edit);
-  const handleLogout = async () => {
-    try {
-      const res = await logoutUser();
-      console.log("Logout response:", res);
-      if (!res || !res.ok) {
-        alert("Logout failed. Please try again.");
-      } else {
-        // alert("Logout successful!");
-        // console.log("Logout successful:", res.message);
-        // router.push("/pages/login");
-        window.location.href = "/pages/login";
-      }
-    } catch (error) {
-      console.error("Error during logout:", error);
-    }
+  const handleLogout = () => {
+    logout();
+    router.push("/pages/login");
   };
   return (
     <>
@@ -60,12 +50,12 @@ function ProfilePage(user) {
                     Full name
                   </h3>
                   <h3 className="mt-1 text-sm text-white-900 sm:mt-0 sm:col-span-2">
-                    <input
+<input
                       className="border-none outline-none bg-transparent p-0"
                       required
                       type="text"
                       disabled={!isEdit}
-                      defaultValue={`${user.user.first_name} ${user.user.last_name}`}
+                      defaultValue={`${user.first_name} ${user.last_name}`}
                     />
                   </h3>
                 </div>
@@ -74,12 +64,12 @@ function ProfilePage(user) {
                     Email address
                   </h3>
                   <h3 className="mt-1 text-sm text-white-900 sm:mt-0 sm:col-span-2">
-                    <input
+<input
                       className="border-none outline-none bg-transparent p-0"
                       required
                       type="email"
                       disabled={!isEdit}
-                      defaultValue={user.user.email}
+                      defaultValue={user.email}
                     />
                   </h3>
                 </div>
@@ -88,12 +78,12 @@ function ProfilePage(user) {
                     Phone number
                   </h3>
                   <h3 className="mt-1 text-sm text-white-900 sm:mt-0 sm:col-span-2">
-                    <input
+<input
                       className="border-none outline-none bg-transparent p-0"
                       required
                       type="number/text"
                       disabled={!isEdit}
-                      defaultValue={user.user.number}
+                      defaultValue={user.number}
                     />
                   </h3>
                 </div>
@@ -132,7 +122,7 @@ function ProfilePage(user) {
             </button>
           </div>
           <div className="w-full p-2">
-            {user.user.isAdmin && (
+{user.isAdmin && (
         <button
           onClick={() => window.location.href = "/admin"}
           className="flex w-full cursor-pointer justify-center rounded-md bg-blue-400 text-white px-3 py-1.5 text-sm/6 font-semibold text-white-900 shadow-lg hover:shadow-blue-400/40 hover:bg-blue-500/50 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
@@ -148,4 +138,3 @@ function ProfilePage(user) {
 }
 
 export default ProfilePage;
-
