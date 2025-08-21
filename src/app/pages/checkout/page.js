@@ -94,7 +94,7 @@ const [selectedPaymentMethod, setSelectedPaymentMethod] = useState("");
               return (
                 <div
                   key={item.productId}
-                  className="justify-between mb-6 max-w-full rounded-lg bg-white p-6 shadow-md flex"
+                  className="justify-between mb-6 max-w-full rounded-lg bg-base-100 p-6 shadow-md flex"
                 >
                   <Image
                     width={400}
@@ -106,10 +106,12 @@ const [selectedPaymentMethod, setSelectedPaymentMethod] = useState("");
                   />
                   <div className="sm:ml-4 sm:flex sm:w-full sm:justify-between">
                     <div className="mt-5 sm:mt-0">
-                      <h2 className="text-lg font-bold text-gray-900">
+                      <h2 className="text-lg font-bold text-base-content">
                         {item.name}
                       </h2>
-                      <p className="mt-1 text-xs text-gray-700">36EU - 4US</p>
+                      <p className="mt-1 text-xs text-base-content">
+                        36EU - 4US
+                      </p>
                     </div>
                     <div className="mt-4 flex justify-between sm:space-y-6 sm:mt-0 sm:block sm:space-x-6">
                       <div className="items-center space-x-4">
@@ -128,14 +130,14 @@ const [selectedPaymentMethod, setSelectedPaymentMethod] = useState("");
           </div>
           {/* cart end */}
           <div className="w-full space-y-6">
-            <div className="mt-6 max-w-full w-full rounded-lg border bg-white p-6 shadow-md md:mt-0">
+            <div className="mt-6 max-w-full w-full rounded-lg border bg-base-100 p-6 shadow-md md:mt-0">
               <div className="mb-2 flex justify-between">
-                <p className="text-gray-700">Subtotal</p>
-                <p className="text-gray-700">Tk. {subtotal.toFixed(2)}</p>
+                <p className="text-base-content">Subtotal</p>
+                <p className="text-base-content">Tk. {subtotal.toFixed(2)}</p>
               </div>
               <div className="flex justify-between">
-                <p className="text-gray-700">Shipping</p>
-                <p className="text-gray-700">Tk. {shippingCost}</p>
+                <p className="text-base-content">Shipping</p>
+                <p className="text-base-content">Tk. {shippingCost}</p>
               </div>
               <hr className="my-4" />
               <div className="flex justify-between">
@@ -144,7 +146,7 @@ const [selectedPaymentMethod, setSelectedPaymentMethod] = useState("");
                   <p className="mb-1 text-lg font-bold">
                     Tk. {totalPrice.toFixed(2)}
                   </p>
-                  <p className="text-sm text-gray-700">including VAT</p>
+                  <p className="text-sm text-base-content">including VAT</p>
                 </div>
               </div>
             </div>
@@ -153,7 +155,7 @@ const [selectedPaymentMethod, setSelectedPaymentMethod] = useState("");
               <div className=" ">
                 <label
                   htmlFor="name"
-                  className="block text-sm/6 font-medium text-gray-900"
+                  className="block text-sm/6 font-medium text-base-content"
                 >
                   Full Name
                 </label>
@@ -166,14 +168,14 @@ const [selectedPaymentMethod, setSelectedPaymentMethod] = useState("");
                     value={formData.name}
                     onChange={handleChange}
                     autoComplete="name"
-                    className="block w-full rounded-md bg-white px-3 py-1.5 text-base text-gray-900 outline-1 -outline-offset-1 outline-gray-300 placeholder:text-gray-400 focus:outline-2 focus:-outline-offset-2 focus:outline-indigo-600 sm:text-sm/6"
+                    className="block w-full rounded-md bg-base-100 px-3 py-1.5 text-base text-base-content outline-1 -outline-offset-1 outline-gray-300 placeholder:text-gray-400 focus:outline-2 focus:-outline-offset-2 focus:outline-indigo-600 sm:text-sm/6"
                   />
                 </div>
               </div>
               <div>
                 <label
                   htmlFor="email"
-                  className="block text-sm/6 font-medium text-gray-900"
+                  className="block text-sm/6 font-medium text-base-content"
                 >
                   Email address
                 </label>
@@ -186,14 +188,14 @@ const [selectedPaymentMethod, setSelectedPaymentMethod] = useState("");
                     onChange={handleChange}
                     value={formData.email}
                     autoComplete="email"
-                    className="block w-full rounded-md bg-white px-3 py-1.5 text-base text-gray-900 outline-1 -outline-offset-1 outline-gray-300 placeholder:text-gray-400 focus:outline-2 focus:-outline-offset-2 focus:outline-indigo-600 sm:text-sm/6"
+                    className="block w-full rounded-md bg-base-100 px-3 py-1.5 text-base text-base-content outline-1 -outline-offset-1 outline-gray-300 placeholder:text-gray-400 focus:outline-2 focus:-outline-offset-2 focus:outline-indigo-600 sm:text-sm/6"
                   />
                 </div>
               </div>
               <div>
                 <label
                   htmlFor="address"
-                  className="block text-sm/6 font-medium text-gray-900"
+                  className="block text-sm/6 font-medium text-base-content"
                 >
                   Address (with area)
                 </label>
@@ -206,14 +208,14 @@ const [selectedPaymentMethod, setSelectedPaymentMethod] = useState("");
                     onChange={handleChange}
                     value={formData.address}
                     autoComplete="address"
-                    className="block w-full rounded-md bg-white px-3 py-1.5 text-base text-gray-900 outline-1 -outline-offset-1 outline-gray-300 placeholder:text-gray-400 focus:outline-2 focus:-outline-offset-2 focus:outline-indigo-600 sm:text-sm/6"
+                    className="block w-full rounded-md bg-base-100 px-3 py-1.5 text-base text-base-content outline-1 -outline-offset-1 outline-gray-300 placeholder:text-gray-400 focus:outline-2 focus:-outline-offset-2 focus:outline-indigo-600 sm:text-sm/6"
                   />
                 </div>
               </div>
               <div>
                 <label
                   htmlFor="phone"
-                  className="block text-sm/6 font-medium text-gray-900"
+                  className="block text-sm/6 font-medium text-base-content"
                 >
                   Phone
                 </label>
@@ -226,7 +228,7 @@ const [selectedPaymentMethod, setSelectedPaymentMethod] = useState("");
                     onChange={handleChange}
                     value={formData.number}
                     autoComplete="tel"
-                    className="block w-full rounded-md bg-white px-3 py-1.5 text-base text-gray-900 outline-1 -outline-offset-1 outline-gray-300 placeholder:text-gray-400 focus:outline-2 focus:-outline-offset-2 focus:outline-indigo-600 sm:text-sm/6"
+                    className="block w-full rounded-md bg-base-100 px-3 py-1.5 text-base text-base-content outline-1 -outline-offset-1 outline-gray-300 placeholder:text-gray-400 focus:outline-2 focus:-outline-offset-2 focus:outline-indigo-600 sm:text-sm/6"
                   />
                 </div>
               </div>

@@ -76,7 +76,7 @@ function ProductDetail({ product }) {
         <meta name="twitter:image" content={product.images?.[0]} />
       </Head>
       {/* head tag end */}
-      <div className="bg-gray-100">
+      <div className="bg-base-200">
         <div className="container mx-auto px-4 py-8">
           <div className="flex flex-wrap mx-4 my-20">
             <div className="w-full md:w-1/2 px-4 mb-8">
