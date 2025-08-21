@@ -11,6 +11,7 @@ async function Profile({params}) {
     return <div className="text-center py-10 text-red-500">Please login to view this page.</div>;
   }
   const user = await faceUserByID(token); 
+  console.log(user);
   if (!user) {
     return <div className="text-center py-10 text-red-500">User not found.</div>;
   }
