@@ -13,6 +13,8 @@ function ProfilePage({ user }) {
     logout();
     router.push("/pages/login");
   };
+  console.log("user", user.email);
+
   return (
     <>
       <div className="flex justify-center items-center p-10 pt-20">
