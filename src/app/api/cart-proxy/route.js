@@ -1,5 +1,7 @@
 import { cookies } from 'next/headers';
 import { NextResponse } from 'next/server';
+const dotenv = require("dotenv");
+dotenv.config();
 
 export async function POST(req) {
   const cookiesStore = await cookies();
@@ -10,13 +12,13 @@ export async function POST(req) {
   }
 
   const body = await req.json();
-  const expressRes = await fetch('http://localhost:4000/api/cart', {
-    method: 'POST',
+  const expressRes = await fetch(`${process.env.BASE_URL}/api/cart`, {
+    method: "POST",
     headers: {
-      'Authorization': `Bearer ${token}`,
-      'Content-Type': 'application/json',
+      Authorization: `Bearer ${token}`,
+      "Content-Type": "application/json",
     },
-    credentials: 'include',
+    credentials: "include",
     body: JSON.stringify(body),
   });
 
